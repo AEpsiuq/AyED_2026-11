@@ -10,14 +10,22 @@ namespace operacionaritmetica
     {
         static void Main(string[] args)
         {
-            Console.Write("¿Que año naciste?: ");
-            int año = Convert.ToInt32(Console.ReadLine());
-            int edad = 2026 - año;
+            Console.Write("Cantidad de minutos: ");
+            int minutos = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Si naciste en el año " + año + ", tu edad al iniciar el año es de " + edad + " años");
+            int horas = minutos / 60;
+            Console.WriteLine("Horas: " + horas);
+            int resto = minutos % 60;
+            Console.WriteLine("Minutos: " + resto);
 
+            int costo_total1 = 6000 * horas;
+            int costo_total2 = 150 * resto;
+            int costo_final = costo_total1 + costo_total2;
 
+            int iva = costo_final* 21 / 100;
+            int monto_final = iva + costo_final;
 
+            Console.WriteLine("Monto final a pagar es de: " + monto_final);
         }
     }
 }
