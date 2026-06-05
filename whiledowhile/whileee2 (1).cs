@@ -10,40 +10,28 @@ namespace while2
     {
         static void Main(string[] args)
         {
-            int secreto = 15;
-            int intentos = 0;
-            int numer = 0;
+            int total = 0;
+            int cantidad = 0;
+            int mayor = 0;
+            string opcion = "S";
 
-            while (numer != secreto && intentos < 5)
+            while (opcion != "N")
             {
-                Console.Write("Ingrese un número: ");
-                numer = Convert.ToInt32(Console.ReadLine());
-
-                intentos++;
-
-                if (numer < secreto)
+                Console.Write("Ingrese monto de venta: ");
+                int venta = Convert.ToInt32(Console.ReadLine());
+                total = total + venta;
+                cantidad++;
+                if (venta > mayor)
                 {
-                    Console.WriteLine("El número es mayor");
+                    mayor = venta;
                 }
-                else
-                {
-                    if (numer > secreto)
-                    {
-                        Console.WriteLine("El número es menor");
-                    }
-                }
-            }
 
-            if (numer == secreto)
-            {
-                Console.WriteLine("Ganaste");
-                Console.WriteLine("Intentos usados: " + intentos);
+                Console.Write("¿Desea continuar? (S/N): ");
+                opcion = Console.ReadLine();
             }
-            else
-            {
-                Console.WriteLine("Perdiste");
-                Console.WriteLine("Intentos usados: " + intentos);
-            }
+            Console.WriteLine("Total recaudado: " + total);
+            Console.WriteLine("Cantidad de ventas: " + cantidad);
+            Console.WriteLine("Venta más alta: " + mayor);
         }
     }
 }
