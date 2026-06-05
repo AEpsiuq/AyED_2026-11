@@ -10,42 +10,40 @@ namespace while2
     {
         static void Main(string[] args)
         {
-            string usuario = "";
-            string clave = "";
+            int positivos = 0;
+            int negativos = 0;
+            int ceros = 0;
 
-            int intentos = 0;
-
-            while (intentos < 3)
+            string entrada = "";
+            while (entrada != "X" && entrada != "x")
             {
-                Console.Write("Usuario: ");
-                usuario = Console.ReadLine();
-              
-                Console.Write("Contraseña: ");
-                clave = Console.ReadLine();
+                Console.Write("Ingrese un número o X para salir: ");
+                entrada = Console.ReadLine();
 
-                if (usuario == "admin")
+                if (entrada != "X" && entrada != "x")
                 {
-                    if (clave == "1234")
+                    int num = Convert.ToInt32(entrada);
+                    if (num > 0)
                     {
-                        Console.WriteLine("Bienvenido al sistema");
-                        intentos = 3;
+                        positivos++;
                     }
                     else
                     {
-                        Console.WriteLine("Datos incorrectos");
-                        intentos++;
+                        if (num < 0)
+                        {
+                            negativos++;  
+                        }
+                        else
+                        {
+                            ceros++;
+                        }
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Datos incorrectos");
-                    intentos++;
-                }
             }
-            if (usuario != "admin" || clave != "1234")
-            {
-                Console.WriteLine("Cuenta bloqueada por seguridad");
-            }
+
+            Console.WriteLine("Positivos: " + positivos);
+            Console.WriteLine("Negativos: " + negativos);
+            Console.WriteLine("Ceros: " + ceros);
         }
     }
 }
