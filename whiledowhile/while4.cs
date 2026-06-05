@@ -10,28 +10,42 @@ namespace while2
     {
         static void Main(string[] args)
         {
-            int total = 0;
-            int cantidad = 0;
-            int mayor = 0;
-            string opcion = "S";
+            string usuario = "";
+            string clave = "";
 
-            while (opcion != "N")
+            int intentos = 0;
+
+            while (intentos < 3)
             {
-                Console.Write("Ingrese monto de venta: ");
-                int venta = Convert.ToInt32(Console.ReadLine());
-                total = total + venta;
-                cantidad++;
-                if (venta > mayor)
-                {
-                    mayor = venta;
-                }
+                Console.Write("Usuario: ");
+                usuario = Console.ReadLine();
+              
+                Console.Write("Contraseña: ");
+                clave = Console.ReadLine();
 
-                Console.Write("¿Desea continuar? (S/N): ");
-                opcion = Console.ReadLine();
+                if (usuario == "admin")
+                {
+                    if (clave == "1234")
+                    {
+                        Console.WriteLine("Bienvenido al sistema");
+                        intentos = 3;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Datos incorrectos");
+                        intentos++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Datos incorrectos");
+                    intentos++;
+                }
             }
-            Console.WriteLine("Total recaudado: " + total);
-            Console.WriteLine("Cantidad de ventas: " + cantidad);
-            Console.WriteLine("Venta más alta: " + mayor);
+            if (usuario != "admin" || clave != "1234")
+            {
+                Console.WriteLine("Cuenta bloqueada por seguridad");
+            }
         }
     }
 }
